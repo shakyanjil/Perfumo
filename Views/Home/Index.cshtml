@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+
+<style type="text/css">
+
+ #hero{
+ }
+    .title-head {
+        font-family: Zeviero;
+        font-size: 86px;
+    
+    }
+    .tagline{
+        text-align:center;
+        margin: auto 0px;
+    }
+    .right-img {
+        height: 50vh;
+    }
+    .img {
+        height: 100%;
+        width: auto;
+    }
+    #product{
+        height: 800px;
+    }
+    .product-tagline{
+    }
+</style>
+<div>
+    <div class="row my-container" id="hero">
+        <div class="col-8 tagline">
+            <h1 class="title-head">World Class Fragrance</h1>
+            <h2 class="mt-5">"Elevate your everyday with a touch of elegance."</h2>
+        </div>
+        <div class="col right-img">
+            <img src="~/Content/img/perfume1.jpg" class="img" alt="Alternate Text" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
+            left product with sliders
+        </div>
+        <div class="col">
+            <span>A Fragranance is a smell, Usually Pleasant or Sweet</span>
+            <div class="row">
+                <div class="col">content 1</div>
+                <div class="col">content 2</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="product">
+        <div class="row">
+            <div class="col">
+                <h1 class="product-tagline">One of the most beloved Perfumes</h1>
+            </div>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>
