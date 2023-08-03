@@ -1,0 +1,34 @@
+﻿@model Project.ViewModel.ProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h2>Create New Item</h2>
+    <table class="table table-striped-columns" width="50">
+        @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.HiddenFor(x => x.Prod_Id)
+            <tr>
+                <td>Product Name</td>
+                <td>@Html.TextBoxFor(x => x.Prod_Name)</td>
+            </tr>
+            <tr>
+                <td>Product Type</td>
+                <td>@Html.TextBoxFor(x => x.Prod_Type)</td>
+            </tr>
+            <tr>
+                <td>Product Price</td>
+                <td>@Html.TextBoxFor(x => x.Prod_Price)</td>
+            </tr>
+            <tr>
+                <td>Product Description</td>
+                <td>@Html.TextBoxFor(x => x.Prod_Desc)</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Save" class="btn btn-success" style="width:150px" /></td>
+            </tr>
+        }
+    </table>
+</div>

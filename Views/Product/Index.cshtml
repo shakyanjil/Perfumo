@@ -1,0 +1,85 @@
+﻿@model Project.ViewModel.ProductViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sn = 1;
+}
+
+<!DOCTYPE html>
+
+<html>  
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            This is the list of the products
+        </h1>
+        <table class="table table-striped">
+            <tr>
+                <th>SN</th>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Product Price</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model.ProductList)
+            {
+                <tr>
+                    <td>@sn</td>
+                    <td>@item.Prod_Name</td>
+                    <td>@item.Prod_Type</td>
+                    <td>@item.Prod_Price</td>
+                    <td>@item.Prod_Description</td>
+                    <td>
+                        <a href="@Url.Action("EditProduct","Product", new { @id=item.Prod_ID })">Edit</a> |
+                        <a href="javascript:void(0)" class="fa fa-trash delApplication" id="@item.Prod_ID"></a>
+
+                    </td>
+                </tr>
+                sn++;
+            }
+        </table>
+        <a class="btn btn-outline-dark" href="@Url.Action("AddProduct", "Product")">Add Item</a>
+    </div>
+</body>
+</html>
+
+<script>
+         $(".delApplication").on("click", function () {
+                    var result = confirm('Are you sure, you want to Delete?');
+                    if (result) {
+                        $.blockUI({
+                            message: 'Please Wait..',
+                            css: {
+                                border: 'none',
+                                padding: '15px',
+                                backgroundColor: '#fff',
+                                '-webkit-border-radius': '10px',
+                                '-moz-border-radius': '10px',
+                                color: '#000'
+                            }
+                        })
+                        debugger;
+                        var id = $(this).attr("id");
+                        $.ajax({
+                            url: '@Url.Action("Delete", "Product")',
+                            data: { id: id },
+                            type: "POST",
+                            success: function (data) {
+                                if (data.success) {
+                                    window.location.reload(true);
+                                    alert(data.msg);
+                                }
+                                else {
+                                    alert(data.msg);
+                                }
+                                $.unblockUI();
+                            }
+                        });
+                    }
+                });
+</script>
